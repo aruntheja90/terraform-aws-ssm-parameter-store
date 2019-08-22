@@ -1,6 +1,6 @@
 resource "aws_ssm_parameter" "this" {
   count       = "${length(var.parameter_names)}"
-  name        = "${var.service_name}/${element(keys(var.parameter_names), count.index)}"
+  name        = "${var.product_domain}/${var.service_name}/${var.environment}/${element(keys(var.parameter_names), count.index)}"
   type        = "${var.type}"
   value       = "changemeplease"
   description = "${lookup(var.parameter_names, "${element(keys(var.parameter_names), count.index)}")}"
@@ -9,8 +9,9 @@ resource "aws_ssm_parameter" "this" {
   tags {
     Service       = "${var.service_name}"
     Description   = "${lookup(var.parameter_names, "${element(keys(var.parameter_names), count.index)}")}"
-    Name          = "${var.service_name}/${element(keys(var.parameter_names), count.index)}"
+    Name          = "${var.product_domain}/${var.service_name}/${var.environment}/${element(keys(var.parameter_names), count.index)}"
     ProductDomain = "${var.product_domain}"
+    Environment   = "${var.environment}"
     ManagedBy     = "Terraform"
   }
 

@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "ssm_policy" {
     ]
 
     resources = [
-      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/${var.service_name}/*",
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/${var.product_domain}/${var.service_name}/${var.environment}/*",
     ]
 
     effect = "Allow"
@@ -39,8 +39,8 @@ data "aws_iam_policy_document" "ssm_policy" {
 }
 
 resource "aws_iam_policy" "policy" {
-  name        = "${var.service_name}-parameter-store"
-  description = "Policy to allow getting access to ${var.service_name} ssm parameter store"
+  name        = "${var.service_name}-${var.environment}-parameter-store"
+  description = "Policy to allow getting access to ${var.service_name}-${var.environment} ssm parameter store"
   policy      = "${data.aws_iam_policy_document.ssm_policy.json}"
 }
 

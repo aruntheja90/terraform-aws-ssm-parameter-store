@@ -6,6 +6,7 @@ variable "product_domain" {
 variable "environment" {
   type        = "string"
   description = "Environment which this parameter belongs to"
+  default     = "stg"
 }
 
 variable "service_name" {
@@ -34,7 +35,7 @@ variable "parameter_names" {
 }
 
 variable "type" {
-  type = "string"
+  type        = "string"
   description = "Parameter store type"
-  default = "SecureString"
+  default     = "SecureString"
 }
