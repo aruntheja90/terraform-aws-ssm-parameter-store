@@ -14,9 +14,10 @@ variable "service_name" {
   description = "The name of service which will have access to the parameter store"
 }
 
-variable "role_name" {
-  type        = "string"
-  description = "IAM Role name that will granted full access to the parameter store"
+variable "role_names" {
+  type        = "list"
+  description = "List of IAM Roles that will granted full access to the parameter store"
+  default     = []
 }
 
 variable "kms_key_id" {
