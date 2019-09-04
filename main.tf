@@ -12,7 +12,7 @@ resource "aws_ssm_parameter" "this" {
     Name          = "/${var.product_domain}/${var.service_name}/${var.environment}/${element(keys(var.parameter_names), count.index)}"
     ProductDomain = "${var.product_domain}"
     Environment   = "${var.environment}"
-    ManagedBy     = "Terraform"
+    ManagedBy     = "terraform"
   }
 
   lifecycle {
