@@ -1,7 +1,7 @@
 module "this" {
   source         = "../"
   product_domain = "pay"
-  environment    = "stg"
+  environment    = "staging"
   service_name   = "paytest"
   role_names     = ["MidasDev"]
   kms_key_id     = "alias/aws/ssm"

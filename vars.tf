@@ -6,7 +6,7 @@ variable "product_domain" {
 variable "environment" {
   type        = "string"
   description = "Environment which this parameter belongs to"
-  default     = "stg"
+  default     = "staging"
 }
 
 variable "service_name" {
